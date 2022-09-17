@@ -1,5 +1,7 @@
 package pers.zz.utils;
 
+import pers.zz.exception.TooShortException;
+
 import java.io.*;
 
 /**
@@ -25,6 +27,15 @@ public class TextUtils {
             sb.append(temp + "\n");
         }
         br.close();
+        String text = sb.toString();
+        if (text.length() <= 100){
+            try {
+                throw new TooShortException("the text length is too short");
+            } catch (TooShortException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
         return sb.toString();
     }
     /**
@@ -41,7 +52,7 @@ public class TextUtils {
                 file.createNewFile();
                 file = new File(path);
             }
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file,true);
             BufferedWriter writer = new BufferedWriter(fw);
             writer.write(String.format("%.2f",similarity));
             writer.flush();

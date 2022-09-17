@@ -137,7 +137,7 @@ public class SimHashSimilarity {
    
         return ans;
     }
-
+    //获取相似度
 	public static double GetSimilarity(String str, String otherStr) {
 		double i = (double) hammingDistance(str, otherStr);
         return 1 - i / 64;
