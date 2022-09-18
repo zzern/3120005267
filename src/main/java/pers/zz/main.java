@@ -26,10 +26,5 @@ public class main {
         double result = SimHashSimilarity.GetSimilarity(text1, text2);
         //将结果写入文件
         TextUtils.writeResultToFile(args[2],result);
-        try {
-            Thread.sleep(100000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
